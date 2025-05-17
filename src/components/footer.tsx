@@ -1,87 +1,106 @@
-import React from "react";
 import Link from "next/link";
-import { NAV_ITEMS, DEPARTMENT_INFO } from "@/constants";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-gray-50 dark:bg-gray-900 pt-12 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8">
           <div>
-            <h2 className="text-lg font-bold text-[color:var(--primary)] mb-4">
-              {DEPARTMENT_INFO.name}
-            </h2>
-            <address className="not-italic text-gray-600 dark:text-gray-400">
-              <p>{DEPARTMENT_INFO.address}</p>
-              <p className="mt-2">
-                TEL: {DEPARTMENT_INFO.phone}
-                <br />
-                FAX: {DEPARTMENT_INFO.fax}
-              </p>
-              <p className="mt-2">{DEPARTMENT_INFO.hours}</p>
-            </address>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              大垣市民病院集中治療科
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
+              最高水準の救急・集中治療を提供し、若手医療者の育成に力を入れています。
+            </p>
+            <p className="text-gray-600 dark:text-gray-400">
+              〒503-8502<br />
+              岐阜県大垣市南頬町4-86<br />
+              TEL: 0584-81-3341
+            </p>
           </div>
           
           <div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
-              サイトマップ
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              リンク
             </h3>
             <ul className="space-y-2">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-gray-600 dark:text-gray-400 hover:text-[color:var(--primary)] dark:hover:text-[color:var(--primary)]"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
+                  ホーム
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
+                  診療科について
+                </Link>
+              </li>
+              <li>
+                <Link href="/staff" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
+                  スタッフ紹介
+                </Link>
+              </li>
+              <li>
+                <Link href="/education" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
+                  若手医師教育
+                </Link>
+              </li>
+              <li>
+                <Link href="/research" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
+                  研究活動
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
+                  お問い合わせ
+                </Link>
+              </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
               関連リンク
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="https://www.ogaki-mh.jp/"
-                  target="_blank"
+                <a 
+                  href="https://www.ogaki-mh.jp/" 
+                  target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-[color:var(--primary)] dark:hover:text-[color:var(--primary)]"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light"
                 >
-                  大垣市民病院
-                </Link>
+                  大垣市民病院 公式サイト
+                </a>
               </li>
               <li>
-                <Link
-                  href="https://www.jsicm.org/"
-                  target="_blank"
+                <a 
+                  href="https://www.jsicm.org/" 
+                  target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-[color:var(--primary)] dark:hover:text-[color:var(--primary)]"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light"
                 >
                   日本集中治療医学会
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
-                  href="/privacy-policy"
-                  className="text-gray-600 dark:text-gray-400 hover:text-[color:var(--primary)] dark:hover:text-[color:var(--primary)]"
+                <a 
+                  href="https://www.jaam.jp/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light"
                 >
-                  プライバシーポリシー
-                </Link>
+                  日本救急医学会
+                </a>
               </li>
             </ul>
           </div>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
-          <p className="text-center text-gray-500 dark:text-gray-400">
-            &copy; {currentYear} 大垣市民病院集中治療科. All rights reserved.
+        <div className="border-t border-gray-200 dark:border-gray-800 pt-8">
+          <p className="text-center text-gray-500 dark:text-gray-400 text-sm">
+            © {currentYear} 大垣市民病院集中治療科 All Rights Reserved.
           </p>
         </div>
       </div>

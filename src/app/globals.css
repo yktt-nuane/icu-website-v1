@@ -1,61 +1,148 @@
 @import "tailwindcss";
 
 :root {
+  --primary: #0077b6;
+  --primary-light: #90e0ef;
+  --primary-dark: #023e8a;
+  --secondary: #48cae4;
+  --accent: #ade8f4;
   --background: #ffffff;
-  --foreground: #171717;
-  --primary: #005f73;
-  --primary-dark: #004c5c;
-  --secondary: #0a9396;
-  --accent: #ee9b00;
-  --light-gray: #f7f7f7;
-  --border-color: #e5e7eb;
+  --foreground: #1e1e1e;
+  --success: #06d6a0;
+  --warning: #ffd166;
+  --danger: #ef476f;
+  --gray-light: #f8f9fa;
+  --gray: #e9ecef;
+  --gray-dark: #6c757d;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --primary: #3d9db3;
-    --primary-dark: #2d8ba0;
-    --secondary: #39c0c4;
-    --accent: #ffb74d;
-    --light-gray: #1a1a1a;
-    --border-color: #333333;
+    --background: #0a1128;
+    --foreground: #f1faee;
+    --gray-light: #1e293b;
+    --gray: #334155;
+    --gray-dark: #94a3b8;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-sans, sans-serif);
 }
 
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.7s ease forwards;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* スクロールアニメーション用 */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.scroll-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 医療アイコンのスタイル */
+.medical-icon {
+  color: var(--primary);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.medical-icon:hover {
+  color: var(--secondary);
+  transform: translateY(-3px);
+}
+
+/* ボタンスタイル */
 .btn-primary {
-  @apply bg-[color:var(--primary)] text-white hover:bg-[color:var(--primary-dark)] px-4 py-2 rounded-md transition-colors duration-200;
+  background-color: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary {
-  @apply border border-[color:var(--border-color)] hover:bg-[color:var(--light-gray)] px-4 py-2 rounded-md transition-colors duration-200;
+  background-color: var(--secondary);
+  color: var(--foreground);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
-.section-title {
-  @apply text-2xl sm:text-3xl font-bold text-[color:var(--primary)] mb-4;
+.btn-secondary:hover {
+  background-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.section-container {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 py-12;
-}
-
+/* カードスタイル */
 .card {
-  @apply bg-white dark:bg-[color:var(--light-gray)] rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    background-color: rgba(30, 41, 59, 0.8);
+  }
 }
