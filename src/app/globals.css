@@ -1,53 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #1e3a8a;
-  --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
-  --secondary-foreground: #1e3a8a;
-  --accent: #dbeafe;
-  --accent-foreground: #1e40af;
+  --primary: #005f73;
+  --primary-dark: #004c5c;
+  --secondary: #0a9396;
+  --accent: #ee9b00;
+  --light-gray: #f7f7f7;
+  --border-color: #e5e7eb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f172a;
-    --foreground: #f8fafc;
-    --primary: #60a5fa;
-    --primary-foreground: #0f172a;
-    --secondary: #1e293b;
-    --secondary-foreground: #f8fafc;
-    --accent: #1e40af;
-    --accent-foreground: #f8fafc;
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --primary: #3d9db3;
+    --primary-dark: #2d8ba0;
+    --secondary: #39c0c4;
+    --accent: #ffb74d;
+    --light-gray: #1a1a1a;
+    --border-color: #333333;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, sans-serif;
+  font-family: var(--font-sans);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-geist-sans), Arial, sans-serif;
+.btn-primary {
+  @apply bg-[color:var(--primary)] text-white hover:bg-[color:var(--primary-dark)] px-4 py-2 rounded-md transition-colors duration-200;
 }
 
-/* カスタムスタイル */
-.aspect-w-16 {
-  position: relative;
-  padding-bottom: 56.25%;
+.btn-secondary {
+  @apply border border-[color:var(--border-color)] hover:bg-[color:var(--light-gray)] px-4 py-2 rounded-md transition-colors duration-200;
 }
 
-.aspect-w-16 > * {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+.section-title {
+  @apply text-2xl sm:text-3xl font-bold text-[color:var(--primary)] mb-4;
+}
+
+.section-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 py-12;
+}
+
+.card {
+  @apply bg-white dark:bg-[color:var(--light-gray)] rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200;
 }

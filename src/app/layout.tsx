@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "大垣市民病院 集中治療科",
-  description: "大垣市民病院集中治療科（ICU）は、生命の危機に瀕した重症患者さんに対して、24時間体制で高度な医療を提供しています。",
-  keywords: "大垣市民病院, 集中治療科, ICU, 救急医療, 重症患者, 集中治療, 岐阜県",
+  title: "大垣市民病院集中治療科",
+  description: "大垣市民病院集中治療科（ICU）の公式ウェブサイト。私たちの施設、スタッフ、医療技術についての情報をご覧いただけます。",
 };
 
 export default function RootLayout({
@@ -24,11 +25,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className="scroll-smooth">
+    <html lang="ja">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
