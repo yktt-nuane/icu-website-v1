@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 病院の十字 -->
+  <rect x="80" y="40" width="40" height="120" rx="4" fill="#1E40AF"/>
+  <rect x="40" y="80" width="120" height="40" rx="4" fill="#1E40AF"/>
+  <!-- 円形の枠 -->
+  <circle cx="100" cy="100" r="90" stroke="#1E40AF" stroke-width="8" fill="none"/>
+  <!-- ICU テキスト -->
+  <text x="100" y="170" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#1E40AF">ICU</text>
+</svg>
