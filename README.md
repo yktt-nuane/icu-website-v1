@@ -33,6 +33,11 @@
 - **ニュースセクション**: フィルタリング可能なニュース一覧
 - **CTA**: 問い合わせと研修プログラム参加への誘導
 - **レスポンシブナビゲーション**: モバイル/デスクトップに最適化されたナビゲーション
+- **診療科について**: 医師体制と多職種連携の詳細紹介
+  - 集中治療専門医と非専門医の配置状況
+  - 24時間365日の勤務体制
+  - 多職種カンファレンスの概要
+  - 各専門職種の役割と連携体制
 
 ## 🚀 セットアップと開発
 
@@ -86,6 +91,10 @@ yarn start
 ├── public/               # 静的ファイル
 │   ├── images/           # 画像ファイル
 │   │   ├── icu-background.jpg     # ヒーローセクション背景
+│   │   ├── about-background.jpg   # 診療科紹介ページ背景
+│   │   ├── icu-specialists.jpg    # 集中治療専門医の画像
+│   │   ├── multidisciplinary-doctors.jpg # 多職種医師チームの画像
+│   │   ├── multidisciplinary-conference.jpg # 多職種カンファレンスの画像
 │   │   ├── medical-education.jpg  # 教育セクション画像
 │   │   ├── team-care.jpg          # チーム医療セクション画像
 │   │   ├── news-conference.jpg    # ニュース画像
@@ -98,6 +107,7 @@ yarn start
 │   │   ├── page.tsx      # ホームページ
 │   │   ├── globals.css   # グローバルスタイル
 │   │   ├── about/        # 診療科について
+│   │   │   └── page.tsx  # 診療科紹介ページ
 │   │   ├── mission/      # ミッション・ビジョン
 │   │   ├── team/         # 多職種チーム医療
 │   │   ├── staff/        # スタッフ紹介
@@ -118,6 +128,10 @@ yarn start
 │   │   ├── NewsEvents.tsx # ニュースイベント (クライアントコンポーネント)
 │   │   ├── Education.tsx # 教育セクション (クライアントコンポーネント)
 │   │   ├── CTA.tsx       # コールトゥアクション
+│   │   ├── about/        # 診療科紹介関連コンポーネント
+│   │   │   ├── AboutHero.tsx     # 診療科紹介ヒーロー
+│   │   │   ├── AboutTeam.tsx     # 医師体制紹介 
+│   │   │   └── AboutMultidisciplinary.tsx # 多職種連携紹介
 │   │   └── ...           # その他のコンポーネント
 │   ├── constants/        # 定数ファイル
 │   │   └── index.ts      # ナビゲーション項目・組織情報など
@@ -140,6 +154,9 @@ yarn start
   - `Stats.tsx` - カウントアップアニメーション
   - `FeatureCard.tsx` - 遅延アニメーション効果
   - `NewsEvents.tsx` - フィルタリング機能
+  - `AboutHero.tsx` - 診療科紹介ページのヒーローセクション
+  - `AboutTeam.tsx` - 医師体制紹介（スクロールアニメーション付き）
+  - `AboutMultidisciplinary.tsx` - 多職種連携紹介（カード表示とアニメーション）
 
 - **サーバーコンポーネント**: `page.tsx` や一部のUIコンポーネント
   - 優れたパフォーマンスとSEO最適化のため、静的に生成できるコンポーネントはサーバーコンポーネントとして実装
@@ -148,13 +165,26 @@ yarn start
 
 サイトで使用する画像は `/public/images/` ディレクトリに配置してください。以下の画像が必要です：
 
-- `icu-background.jpg` - ヒーローセクションの背景
+- `icu-background.jpg` - ホームページのヒーローセクションの背景
+- `about-background.jpg` - 診療科紹介ページの背景
+- `icu-specialists.jpg` - 集中治療専門医の画像
+- `multidisciplinary-doctors.jpg` - 多職種医師チームの画像
+- `multidisciplinary-conference.jpg` - 多職種カンファレンスの画像
 - `medical-education.jpg` - 教育セクションの画像
 - `team-care.jpg` - チーム医療セクションの画像
 - `news-conference.jpg` - 学会発表のニュース画像
 - `news-seminar.jpg` - セミナーのニュース画像
 
-画像は著作権フリーのものを使用するか、病院で撮影した画像を使用してください。
+画像生成AIを利用する場合は、以下のようなプロンプトが有効です：
+
+```
+A professional, modern Japanese intensive care unit (ICU) with advanced medical equipment. 
+Soft lighting, clean environment with blue accents. Wide angle shot showing medical monitors, 
+ventilators, and hospital beds. No identifiable patients or medical staff. 
+High-resolution photo-realistic style, suitable for a website hero banner.
+```
+
+あるいは、著作権フリーのものを使用するか、病院で撮影した画像を使用してください。
 
 ## 📤 デプロイ
 
@@ -178,6 +208,8 @@ vercel
 - ナビゲーション項目は `src/constants/index.ts` の `NAV_ITEMS` を更新
 - ニュース記事は `src/components/NewsEvents.tsx` 内の `newsData` 配列を更新
 - 統計情報は `src/components/Stats.tsx` 内の数値を更新
+- 医師体制情報は `src/components/about/AboutTeam.tsx` の内容を更新
+- 多職種連携情報は `src/components/about/AboutMultidisciplinary.tsx` の内容を更新
 
 ### スタイルの変更
 
