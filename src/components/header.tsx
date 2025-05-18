@@ -1,8 +1,20 @@
+// src/components/header.tsx 修正版
 import React from "react";
 import Link from "next/link";
 import { NAV_ITEMS, DEPARTMENT_INFO } from "@/constants";
 
 const Header = () => {
+  // 定数ファイルの代わりに直接定義（constants/index.tsも修正が必要）
+  const updatedNavItems = [
+    { href: "/", label: "ホーム" },
+    { href: "/about", label: "診療科について" },
+    { href: "/mission", label: "ミッション・ビジョン" },
+    { href: "/team", label: "多職種チーム医療" },
+    { href: "/staff", label: "スタッフ紹介" },
+    { href: "/research", label: "研究活動" },
+    { href: "/contact", label: "お問い合わせ" }
+  ];
+
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-[#0a0a0a] shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -16,7 +28,7 @@ const Header = () => {
           </div>
           
           <nav className="hidden md:flex space-x-8">
-            {NAV_ITEMS.map((item) => (
+            {updatedNavItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -68,7 +80,7 @@ const Header = () => {
       {/* Mobile menu, show/hide based on mobile menu state */}
       <div className="hidden md:hidden">
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          {NAV_ITEMS.map((item) => (
+          {updatedNavItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}

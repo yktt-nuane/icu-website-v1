@@ -25,38 +25,43 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
               リンク
             </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
-                  ホーム
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
-                  診療科について
-                </Link>
-              </li>
-              <li>
-                <Link href="/staff" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
-                  スタッフ紹介
-                </Link>
-              </li>
-              <li>
-                <Link href="/education" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
-                  若手医師教育
-                </Link>
-              </li>
-              <li>
-                <Link href="/research" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
-                  研究活動
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
-                  お問い合わせ
-                </Link>
-              </li>
-            </ul>
+<ul className="space-y-2">
+  <li>
+    <Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
+      ホーム
+    </Link>
+  </li>
+  <li>
+    <Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
+      診療科について
+    </Link>
+  </li>
+  <li>
+    <Link href="/mission" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
+      ミッション・ビジョン
+    </Link>
+  </li>
+  <li>
+    <Link href="/team" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
+      多職種チーム医療
+    </Link>
+  </li>
+  <li>
+    <Link href="/staff" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
+      スタッフ紹介
+    </Link>
+  </li>
+  <li>
+    <Link href="/research" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
+      研究活動
+    </Link>
+  </li>
+  <li>
+    <Link href="/contact" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light">
+      お問い合わせ
+    </Link>
+  </li>
+</ul>
           </div>
           
           <div>

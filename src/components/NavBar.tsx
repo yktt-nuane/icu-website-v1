@@ -1,3 +1,4 @@
+// src/components/NavBar.tsx 修正版
 "use client";
 
 import { useState, useEffect } from "react";
@@ -60,8 +61,9 @@ const NavBar = () => {
             <div className="ml-10 flex items-baseline space-x-6">
               <NavLink href="/" label="ホーム" scrolled={scrolled} />
               <NavLink href="/about" label="診療科について" scrolled={scrolled} />
+              <NavLink href="/mission" label="ミッション・ビジョン" scrolled={scrolled} />
+              <NavLink href="/team" label="多職種チーム医療" scrolled={scrolled} />
               <NavLink href="/staff" label="スタッフ紹介" scrolled={scrolled} />
-              <NavLink href="/education" label="若手医師教育" scrolled={scrolled} />
               <NavLink href="/research" label="研究活動" scrolled={scrolled} />
               <NavLink href="/contact" label="お問い合わせ" scrolled={scrolled} />
             </div>
@@ -128,8 +130,9 @@ const NavBar = () => {
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <MobileNavLink href="/" label="ホーム" setIsOpen={setIsOpen} />
           <MobileNavLink href="/about" label="診療科について" setIsOpen={setIsOpen} />
+          <MobileNavLink href="/mission" label="ミッション・ビジョン" setIsOpen={setIsOpen} />
+          <MobileNavLink href="/team" label="多職種チーム医療" setIsOpen={setIsOpen} />
           <MobileNavLink href="/staff" label="スタッフ紹介" setIsOpen={setIsOpen} />
-          <MobileNavLink href="/education" label="若手医師教育" setIsOpen={setIsOpen} />
           <MobileNavLink href="/research" label="研究活動" setIsOpen={setIsOpen} />
           <MobileNavLink href="/contact" label="お問い合わせ" setIsOpen={setIsOpen} />
         </div>
