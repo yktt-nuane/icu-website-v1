@@ -1,10 +1,10 @@
-// src/components/header.tsx 修正版
+// src/components/header.tsx
 import React from "react";
 import Link from "next/link";
-import { NAV_ITEMS, DEPARTMENT_INFO } from "@/constants";
+import { DEPARTMENT_INFO } from "@/constants";
 
 const Header = () => {
-  // 定数ファイルの代わりに直接定義（constants/index.tsも修正が必要）
+  // 定数ファイルの代わりに直接定義
   const updatedNavItems = [
     { href: "/", label: "ホーム" },
     { href: "/about", label: "診療科について" },

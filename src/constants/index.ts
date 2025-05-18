@@ -1,4 +1,4 @@
-// src/constants/index.ts のNAV_ITEMS部分を修正
+// src/constants/index.ts
 export type NavItem = {
   label: string;
   href: string;
@@ -34,3 +34,18 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/contact",
   },
 ];
+
+export type DepartmentInfo = {
+  shortName: string;
+  fullName: string;
+  address: string;
+  phone: string;
+  email?: string;
+};
+
+export const DEPARTMENT_INFO: DepartmentInfo = {
+  shortName: "大垣市民病院集中治療科",
+  fullName: "大垣市民病院集中治療科",
+  address: "〒503-8502 岐阜県大垣市南頬町4-86",
+  phone: "0584-81-3341"
+};
