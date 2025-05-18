@@ -2,7 +2,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
 
 type StaffMember = {
   id: string;
@@ -338,6 +337,7 @@ const StaffDirectory = () => {
     };
   }, []);
 
+  // 年度とカテゴリーでフィルタリング
   const filteredStaff = activeCategory === "all"
     ? staffData
     : staffData.filter((staff) => staff.category === activeCategory);
@@ -350,12 +350,6 @@ const StaffDirectory = () => {
   const closeStaffModal = () => {
     setSelectedStaff(null);
     document.body.style.overflow = "auto";
-  };
-
-  // イニシャルを取得する関数
-  const getInitials = (name: string) => {
-    const names = name.split(' ');
-    return names.map(n => n.charAt(0)).join('');
   };
 
   return (
