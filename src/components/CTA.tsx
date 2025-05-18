@@ -16,13 +16,13 @@ const CTA = () => {
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link
             href="/contact"
-            className="px-8 py-4 bg-white text-primary font-medium rounded-full hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            className="px-8 py-4 bg-white text-primary font-bold rounded-full hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             お問い合わせ
           </Link>
           <Link
             href="/team"
-            className="px-8 py-4 bg-transparent text-white border-2 border-white font-medium rounded-full hover:bg-white/10 transition-all"
+            className="px-8 py-4 bg-transparent text-white border-2 border-white font-bold rounded-full hover:bg-white/10 transition-all"
           >
             チーム医療について詳しく
           </Link>

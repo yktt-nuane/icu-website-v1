@@ -43,8 +43,8 @@ const Hero = () => {
             </h1>
 
             <p className="hero-description text-xl text-white/90 mb-8">
-              大垣市民病院集中治療科は、多職種連携による総力戦で
-              重症患者さんに最高水準の集中治療を提供しています。
+              大垣市民病院集中治療科は、様々な医療機器を用いた最先端治療と
+              多職種連携による総力戦で重症患者さんに高度な集中治療を提供しています。
             </p>
 
             <div className="hero-buttons flex flex-col sm:flex-row gap-4">
