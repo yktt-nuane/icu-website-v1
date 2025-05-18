@@ -7,28 +7,32 @@
 ## 🌟 特徴
 
 - 最新のNext.js 15とTypeScriptを使用した現代的なウェブサイト
+- App Routerアーキテクチャによる効率的なルーティングとレンダリング
 - レスポンシブデザインによるすべてのデバイス対応
-- アニメーションとインタラクティブな要素による優れたUX
+- インターセクションオブザーバーを活用したスクロールアニメーション
 - ダークモード対応
 - SEO対策済み
 - モダンでクリーンなUI
 
 ## 🛠️ 技術スタック
 
-- **フレームワーク**: [Next.js 15.3.2](https://nextjs.org/)
+- **フレームワーク**: [Next.js 15.3.2](https://nextjs.org/) (App Router)
 - **言語**: [TypeScript](https://www.typescriptlang.org/)
 - **スタイリング**: [Tailwind CSS 4](https://tailwindcss.com/)
-- **フォント**: [Geist](https://vercel.com/font)
+- **フォント**: [Geist](https://vercel.com/font) (Sans & Mono)
+- **パッケージ管理**: npm/yarn
 - **デプロイ**: [Vercel](https://vercel.com/)
 
 ## 📋 主要機能
 
-- **ヒーローセクション**: 集中治療科の概要紹介
-- **特長セクション**: 6つの特長をビジュアルで紹介
+- **ヒーローセクション**: 集中治療科の概要紹介 (アニメーション付き)
+- **特長セクション**: 6つの特長をビジュアルで紹介 (スクロールアニメーション)
+- **ミッション・ビジョン**: 診療科の理念と価値観の紹介
+- **多職種チーム医療**: チーム医療の特徴と利点の紹介
 - **統計セクション**: アニメーションする診療実績の数値表示
-- **研修医教育セクション**: 若手医師向け教育プログラムの紹介
 - **ニュースセクション**: フィルタリング可能なニュース一覧
 - **CTA**: 問い合わせと研修プログラム参加への誘導
+- **レスポンシブナビゲーション**: モバイル/デスクトップに最適化されたナビゲーション
 
 ## 🚀 セットアップと開発
 
@@ -81,25 +85,64 @@ yarn start
 /
 ├── public/               # 静的ファイル
 │   ├── images/           # 画像ファイル
-│   ├── hospital-logo.svg # ロゴ
+│   │   ├── icu-background.jpg     # ヒーローセクション背景
+│   │   ├── medical-education.jpg  # 教育セクション画像
+│   │   ├── team-care.jpg          # チーム医療セクション画像
+│   │   ├── news-conference.jpg    # ニュース画像
+│   │   └── news-seminar.jpg       # セミナー画像
+│   ├── hospital-logo.svg # 病院ロゴ
 │   └── ...
 ├── src/                  # ソースコード
 │   ├── app/              # Next.js App Router
 │   │   ├── layout.tsx    # ルートレイアウト
 │   │   ├── page.tsx      # ホームページ
 │   │   ├── globals.css   # グローバルスタイル
-│   │   └── ...           # 他のページ
+│   │   ├── about/        # 診療科について
+│   │   ├── mission/      # ミッション・ビジョン
+│   │   ├── team/         # 多職種チーム医療
+│   │   ├── staff/        # スタッフ紹介
+│   │   ├── research/     # 研究活動
+│   │   ├── news/         # ニュース
+│   │   ├── education/    # 教育プログラム
+│   │   ├── contact/      # お問い合わせ
+│   │   └── ...           # その他のページ
 │   ├── components/       # 再利用可能なコンポーネント
-│   │   ├── NavBar.tsx    # ナビゲーションバー
+│   │   ├── NavBar.tsx    # ナビゲーションバー (クライアントコンポーネント)
 │   │   ├── Footer.tsx    # フッター
-│   │   ├── Hero.tsx      # ヒーローセクション
+│   │   ├── Hero.tsx      # ヒーローセクション (クライアントコンポーネント)
+│   │   ├── Features.tsx  # 特長セクション
+│   │   ├── FeatureCard.tsx # 特長カード (クライアントコンポーネント)
+│   │   ├── MissionVision.tsx # ミッション・ビジョン (クライアントコンポーネント)
+│   │   ├── TeamCare.tsx  # チーム医療 (クライアントコンポーネント)
+│   │   ├── Stats.tsx     # 統計セクション (クライアントコンポーネント)
+│   │   ├── NewsEvents.tsx # ニュースイベント (クライアントコンポーネント)
+│   │   ├── Education.tsx # 教育セクション (クライアントコンポーネント)
+│   │   ├── CTA.tsx       # コールトゥアクション
 │   │   └── ...           # その他のコンポーネント
+│   ├── constants/        # 定数ファイル
+│   │   └── index.ts      # ナビゲーション項目・組織情報など
 │   └── ...
+├── eslint.config.mjs     # ESLint設定
 ├── next.config.ts        # Next.js設定
 ├── package.json          # 依存パッケージと設定
+├── postcss.config.mjs    # PostCSS設定
 ├── tsconfig.json         # TypeScript設定
+├── .gitignore            # Gitの除外ファイル設定
 └── ...
 ```
+
+## 🔄 コンポーネントとデータフロー
+
+- **クライアントコンポーネント**: `"use client"` ディレクティブを使用したインタラクティブなコンポーネント
+  - `NavBar.tsx` - スクロール検出とモバイルメニュー状態管理
+  - `Hero.tsx` - ロード時のアニメーション効果
+  - `MissionVision.tsx` - スクロールアニメーション
+  - `Stats.tsx` - カウントアップアニメーション
+  - `FeatureCard.tsx` - 遅延アニメーション効果
+  - `NewsEvents.tsx` - フィルタリング機能
+
+- **サーバーコンポーネント**: `page.tsx` や一部のUIコンポーネント
+  - 優れたパフォーマンスとSEO最適化のため、静的に生成できるコンポーネントはサーバーコンポーネントとして実装
 
 ## 🖼️ 画像の追加
 
@@ -107,9 +150,8 @@ yarn start
 
 - `icu-background.jpg` - ヒーローセクションの背景
 - `medical-education.jpg` - 教育セクションの画像
-- `news-ecmo.jpg` - ECMOトレーニングのニュース画像
+- `team-care.jpg` - チーム医療セクションの画像
 - `news-conference.jpg` - 学会発表のニュース画像
-- `news-icu.jpg` - ICU増床のニュース画像
 - `news-seminar.jpg` - セミナーのニュース画像
 
 画像は著作権フリーのものを使用するか、病院で撮影した画像を使用してください。
@@ -133,13 +175,21 @@ vercel
 ### 内容の更新
 
 - `src/components/` 内の各コンポーネントファイルを編集して内容を更新
+- ナビゲーション項目は `src/constants/index.ts` の `NAV_ITEMS` を更新
 - ニュース記事は `src/components/NewsEvents.tsx` 内の `newsData` 配列を更新
 - 統計情報は `src/components/Stats.tsx` 内の数値を更新
 
 ### スタイルの変更
 
 - グローバルスタイルは `src/app/globals.css` で変更
-- カラースキームは CSS 変数で定義されており、同じファイルで変更可能
+- カラースキームはCSS変数で定義されており、同じファイルの`:root`セレクタで変更可能
+- ダークモード設定は `@media (prefers-color-scheme: dark)` 内で定義
+
+### アニメーションのカスタマイズ
+
+- スクロールアニメーションは `src/app/globals.css` の `.scroll-reveal` クラスで設定
+- カウントアップアニメーションは `src/components/Stats.tsx` で調整可能
+- ヒーローセクションのアニメーションは `src/components/Hero.tsx` と `globals.css` で設定
 
 ## 🤝 貢献
 
