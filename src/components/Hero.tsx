@@ -1,19 +1,21 @@
-
 "use client";
 
-import { useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setIsVisible(true);
+    // DOMの更新を直接行うため、再レンダリングが発生しない
+    if (heroRef.current) {
+      heroRef.current.classList.add('loaded');
+    }
   }, []);
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div ref={heroRef} className="relative h-screen overflow-hidden hero-section">
       {/* 背景画像 */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -21,6 +23,8 @@ const Hero = () => {
           alt="集中治療室"
           fill
           priority
+          sizes="100vw"
+          quality={90}
           style={{ objectFit: "cover" }}
           className="brightness-[0.7]"
         />
@@ -33,66 +37,51 @@ const Hero = () => {
       <div className="relative z-20 h-full flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div className="max-w-3xl">
-          <h1
-  className={`text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 ${
-    isVisible ? "animate-fade-in" : "opacity-0"
-  }`}
-  style={{ animationDelay: "0.2s" }}
->
-  急性期医療の<br />
-  <span className="text-accent">最後の砦</span>
-</h1>
+            <h1 className="hero-title text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+              急性期医療の<br />
+              <span className="text-accent">最後の砦</span>
+            </h1>
 
-<p
-  className={`text-xl text-white/90 mb-8 ${
-    isVisible ? "animate-fade-in" : "opacity-0"
-  }`}
-  style={{ animationDelay: "0.4s" }}
->
-  大垣市民病院集中治療科は、多職種連携による総力戦で
-  重症患者さんに最高水準の集中治療を提供しています。
-</p>
+            <p className="hero-description text-xl text-white/90 mb-8">
+              大垣市民病院集中治療科は、多職種連携による総力戦で
+              重症患者さんに最高水準の集中治療を提供しています。
+            </p>
 
-<div
-  className={`flex flex-col sm:flex-row gap-4 ${
-    isVisible ? "animate-fade-in" : "opacity-0"
-  }`}
-  style={{ animationDelay: "0.6s" }}
->
-  <Link
-    href="/about"
-    className="btn-primary inline-flex items-center justify-center"
-  >
-    診療科について
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5 ml-2"
-      viewBox="0 0 20 20"
-      fill="currentColor"
-    >
-      <path
-        fillRule="evenodd"
-        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-        clipRule="evenodd"
-      />
-    </svg>
-  </Link>
-  
-  <Link
-    href="/team"
-    className="btn-secondary inline-flex items-center justify-center"
-  >
-    チーム医療
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5 ml-2"
-      viewBox="0 0 20 20"
-      fill="currentColor"
-    >
-      <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
-    </svg>
-  </Link>
-</div>
+            <div className="hero-buttons flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/about"
+                className="btn-primary inline-flex items-center justify-center"
+              >
+                診療科について
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 ml-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </Link>
+              
+              <Link
+                href="/team"
+                className="btn-secondary inline-flex items-center justify-center"
+              >
+                チーム医療
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 ml-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
